@@ -17,7 +17,7 @@
         },
         methods: {
             searchFilter (id, value) {
-                axios.get('/laravel-vue/public/api/filter-task?'+id + '=' + value)
+                axios.get('/api/filter-task?'+id + '=' + value)
                     .then(response => {
                         this.$store.commit('setTasks', response.data.data)
                     })

@@ -17,32 +17,32 @@ const getters = {
 
 const actions = {
     getTask ({state, commit, dispatch}, id) {
-        axios.get(`/laravel-vue/public/api/task/${id}`)
+        axios.get(`/api/task/${id}`)
             .then(response => {
                 commit('setTask', response.data.data)
             })
     },
     all ({commit}) {
-        axios.get('/laravel-vue/public/api/get-task')
+        axios.get('/api/get-task')
             .then(response => {
                 commit('setTasks', response.data.data)
             })
     },
     deleteTask ({dispatch}, id) {
-        axios.delete(`/laravel-vue/public/api/task/${id}`)
+        axios.delete(`/api/task/${id}`)
             .then( response => {
                 router.push({name: 'task.index'})
             })
     },
     update ({}, data) {
-        axios.patch(`/laravel-vue/public/api/task/${data.id}`,
+        axios.patch(`/api/task/${data.id}`,
             {title: data.title, description: data.description, status: data.status})
             .then(response => {
                 router.push({name: 'task.show', params: {id: data.id}})
             })
     },
     store({}, data) {
-        axios.post('/laravel-vue/public/api/add-task',
+        axios.post('/api/add-task',
             {title: data.title, description: data.description})
             .then(response => {
                 router.push({name: 'task.index'})
