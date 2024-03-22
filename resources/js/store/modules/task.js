@@ -31,6 +31,7 @@ const actions = {
     deleteTask ({dispatch}, id) {
         axios.delete(`/api/task/${id}`)
             .then( response => {
+                dispatch('all')
                 router.push({name: 'task.index'})
             })
     },
