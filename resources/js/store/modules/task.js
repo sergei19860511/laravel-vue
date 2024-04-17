@@ -49,7 +49,7 @@ const actions = {
                 router.push({name: 'task.index'})
             })
             .catch(errors => {
-                console.log(errors)
+                console.log(errors.response.data.message)
                 router.push({name: 'task.create', query: {
                         errorTitle: errors.response.data.errors.title,
                         errorDescription: errors.response.data.errors.description,
